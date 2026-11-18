@@ -46,8 +46,8 @@ function updateUnits() {
     const type = document.getElementById("type").value;
     const from = document.getElementById("fromUnit");
     const to = document.getElementById("toUnit");
-    from.innerHTML = "",
-    to.innerHTML = "",
+    from.innerHTML = "";
+    to.innerHTML = "";
     units[type].forEach(u => {
         from.innerHTML += `<option value="${u}">${u}</option>`;
         to.innerHTML += `<option value="${u}">${u}</option>`;
@@ -60,17 +60,19 @@ function convert() {
     const from = document.getElementById("fromUnit").value;
     const to = document.getElementById("toUnit").value;
     const resultBox = document.getElementById("result");
-};
 
-if (isNaN(value)) {
-    resultBox.textContent = "Enter a valid number.",
-    resultBox.style.display = "block";
-    return;
-};
 
-const inBase = inverse[type][from](value);
-const finalValue = conversions[type][to](inBase);
-resultBox.textContent = `${value} ${from} = ${finalValue.toFixed(2)}${to}`;
-resultBox.style.display = "block"
+    if (isNaN(value)) {
+        resultBox.textContent = "Enter a valid number."
+        resultBox.style.display = "block";
+        return;
+    };
+
+    const inBase = inverse[type][from](value);
+    const finalValue = conversions[type][to](inBase);
+    resultBox.textContent = `${value} ${from} = ${finalValue.toFixed(2)} ${to}`;
+    resultBox.style.display = "block"
+
+}
 
 updateUnits()
