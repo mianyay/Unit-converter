@@ -74,3 +74,43 @@ body {
     display: none;
 }
 
+.layout {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.history {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    width: 320px;
+    box-sizing: border-box;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.history h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    text-align: center;
+    color: #1e293b;
+}
+
+.history table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.history th, .history td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    color: #334155;
+}
+
+.history th {
+    background: #f9fafb;
+}
+

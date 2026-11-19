@@ -73,6 +73,9 @@ function convert() {
     resultBox.textContent = `${value} ${from} = ${finalValue.toFixed(2)} ${to}`;
     resultBox.style.display = "block"
 
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${value} ${from}</td><td>${finalValue.toFixed(2)} ${to}</td>`;
+    document.getElementById("historyBody").prepend(row);
 }
 
 updateUnits()
