@@ -1,5 +1,5 @@
 const units = {
-    length: ["meters", "feet", "inches"],
+    length: ["meters", "centimeters", "millimeters", "feet", "inches", "yards", "miles", "light years"],
     weight: ["kilograms", "pounds"],
     temperature: ["celsius", "fahrenheit", "kelvin"]
 };
@@ -7,8 +7,13 @@ const units = {
 const conversions = {
     length: {
         meters: a => a,
+        centimeters: a => a * 100,
+        millimeters: a => a * 1000,
         feet: a => a * 3.28084,
         inches: a => a * 39.3701,
+        yards: a => a * 1.09361,
+        miles: a => a * 0.000621371,
+        "light years": a => a / 9.4607e15,
     },
 
     weight: {
@@ -26,8 +31,13 @@ const conversions = {
 const inverse = {
     length: {
         meters: a => a,
+        centimeters: a => a / 100,
+        millimeters: a => a / 1000,
         feet: a => a / 3.28084,
-        inches: a => a / 39.3701
+        inches: a => a / 39.3701,
+        yards: a => a / 1.09361,
+        miles: a => a / 0.000621371,
+        "light years": a => a / 9.4607e15,
     },
 
     weight: {
@@ -40,6 +50,13 @@ const inverse = {
         fahrenheit: a => (a - 32) * 5/9,
         kelvin: a => a - 273.15
     },
+};
+
+function decimalpoint(n) {
+    if (n !== 0 && Math.abs(n) < 0.01) {
+        return n.toExponential(3);
+    }
+    return n.toFixed(2)
 };
 
 function updateUnits() {
@@ -70,11 +87,11 @@ function convert() {
 
     const inBase = inverse[type][from](value);
     const finalValue = conversions[type][to](inBase);
-    resultBox.textContent = `${value} ${from} = ${finalValue.toFixed(2)} ${to}`;
+    resultBox.textContent = `${value} ${from} = ${decimalpoint(finalValue)} ${to}`;
     resultBox.style.display = "block"
 
     const row = document.createElement("tr");
-    row.innerHTML = `<td>${value} ${from}</td><td>${finalValue.toFixed(2)} ${to}</td>`;
+    row.innerHTML = `<td>${value} ${from}</td><td>${decimalpoint(finalValue)} ${to}</td>`
     document.getElementById("historyBody").prepend(row);
 }
 
