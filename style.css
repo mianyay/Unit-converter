@@ -1,3 +1,5 @@
+* {font-family: "Pixelify Sans", sans-serif;}
+
 body {
     height: 100vh;
     margin: 0;
@@ -112,5 +114,4 @@ body {
 
 .history th {
     background: #f9fafb;
-}
-
+};
