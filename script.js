@@ -1,6 +1,6 @@
 const units = {
     length: ["meters", "centimeters", "millimeters", "feet", "inches", "yards", "miles", "light years"],
-    weight: ["kilograms", "pounds"],
+    weight: ["kilograms", "grams", "milligrams", "pounds", "ounce"],
     temperature: ["celsius", "fahrenheit", "kelvin"]
 };
 
@@ -18,7 +18,10 @@ const conversions = {
 
     weight: {
         kilograms: a => a,
+        grams: a => a * 1000,
+        milligrams: a => a * 1e+6,
         pounds: a => a * 2.20462,
+        ounce: a => a * 35.274,
     },
 
     temperature: {
@@ -42,7 +45,10 @@ const inverse = {
 
     weight: {
         kilograms: a => a,
+        grams: a => a / 1000,
+        milligrams: a => a / 1e+6,
         pounds: a => a / 2.20462,
+        ounce: a => a / 35.274,
     },
 
     temperature: {
