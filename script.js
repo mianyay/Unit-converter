@@ -39,7 +39,7 @@ const conversions = {
         hours: a => a / 3600,
         days: a => a / 86400,
         weeks: a => a / 604800,
-        month: a => a / 2.628e+6,
+        months: a => a / 2.628e+6,
         years: a => a / 3.154e+7,
     }
 };
@@ -53,7 +53,7 @@ const inverse = {
         inches: a => a / 39.3701,
         yards: a => a / 1.09361,
         miles: a => a / 0.000621371,
-        "light years": a => a / 9.4607e15,
+        "light years": a => a * 9.4607e15,
     },
 
     weight: {
@@ -78,7 +78,7 @@ const inverse = {
         hours: a => a * 3600,
         days: a => a * 86400,
         weeks: a => a * 604800,
-        month: a => a * 2.628e+6,
+        months: a => a * 2.628e+6,
         years: a => a * 3.154e+7,
     }
 };
@@ -115,9 +115,12 @@ let conversionHistory = savetolocalstorage();
 function renderhistory() {
     const body = document.getElementById("historyBody");
     body.innerHTML = "";
-    conversionHistory.forEach(item => {
+    conversionHistory.forEach((item, index) => {
         const row = document.createElement("tr");
-        row.innerHTML = `<td>${item.from}</td><td>${item.to}</td>`
+        row.innerHTML = 
+        `<td>${item.from}</td>
+        <td>${item.to}</td>
+        <td><button class="delete-btn" onclick="deleteEntry(${index})" title="Delete">🗑️</button></td>`
         body.appendChild(row);
     });
 }
@@ -125,6 +128,12 @@ function renderhistory() {
 function clearHistory() {
     conversionHistory = [];
     localStorage.removeItem("conversionHistory");
+    renderhistory();
+}
+
+function deleteEntry(index) {
+    conversionHistory.splice(index, 1);
+    localStorage.setItem("conversionHistory", JSON.stringify(conversionHistory));
     renderhistory();
 }
 
