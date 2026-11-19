@@ -102,6 +102,26 @@ function updateUnits() {
     });
 };
 
+function savetolocalstorage() {
+    try {
+        return JSON.parse(localStorage.getItem("conversionHistory")) || [];
+    } catch {
+        return [];
+    }
+};
+
+let conversionHistory = savetolocalstorage();
+
+function renderhistory() {
+    const body = document.getElementById("historyBody");
+    body.innerHTML = "";
+    conversionHistory.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${item.from}</td><td>${item.to}</td>`
+        body.appendChild(row);
+    });
+}
+
 function convert() {
     const type = document.getElementById("type").value;
     const value = parseFloat(document.getElementById("inputValue").value);
@@ -121,9 +141,14 @@ function convert() {
     resultBox.textContent = `${value} ${from} = ${decimalpoint(finalValue)} ${to}`;
     resultBox.style.display = "block"
 
-    const row = document.createElement("tr");
-    row.innerHTML = `<td>${value} ${from}</td><td>${decimalpoint(finalValue)} ${to}</td>`
-    document.getElementById("historyBody").prepend(row);
+    conversionHistory.unshift({
+        from: `${value} ${from}`,
+        to: `${decimalpoint(finalValue)} ${to}`
+    });
+    conversionHistory = conversionHistory.slice(0, 20);
+    localStorage.setItem("conversionHistory", JSON.stringify(conversionHistory));
+    renderhistory();
 }
 
 updateUnits()
+renderhistory()
