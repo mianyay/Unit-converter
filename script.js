@@ -122,6 +122,12 @@ function renderhistory() {
     });
 }
 
+function clearHistory() {
+    conversionHistory = [];
+    localStorage.removeItem("conversionHistory");
+    renderhistory();
+}
+
 function convert() {
     const type = document.getElementById("type").value;
     const value = parseFloat(document.getElementById("inputValue").value);

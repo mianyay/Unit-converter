@@ -114,4 +114,20 @@ body {
 
 .history th {
     background: #f9fafb;
-};
+}
+
+.clear-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 7px;
+    font-size: 14px;
+    background: #e5e7eb;
+    color: #334155;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background: #d1d5db;
+}
