@@ -8,28 +8,43 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <div class="converter">
-        <h3>Unit Converter</h3>
-        <input type="number" id="inputValue" placeholder="Enter value">
+    <div class="layout">
+        <div class="converter">
+            <h3>Unit Converter</h3>
+            <input type="number" id="inputValue" placeholder="Enter value">
 
-        <div class="row">
-            <label for="type">Type:</label>
-            <select id="type" onchange="updateUnits()">
-                <option value="length">Length</option>
-                <option value="weight">Weight</option>
-                <option value="temperature">Temperature</option>
-            </select>
+            <div class="row">
+                <label for="type">Type:</label>
+                <select id="type" onchange="updateUnits()">
+                    <option value="length">Length</option>
+                    <option value="weight">Weight</option>
+                    <option value="temperature">Temperature</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label>Convert</label>
+                <select id="fromUnit"></select>
+                <span style="font-size: 14px">to</span>
+                <select id="toUnit"></select>
+            </div>
+
+            <button onclick="convert()">Convert</button>
+            <div class="result" id="result"></div>
         </div>
 
-        <div class="row">
-            <label>Convert</label>
-            <select id="fromUnit"></select>
-            <span style="font-size: 14px">to</span>
-            <select id="toUnit"></select>
+        <div class="history">
+            <h3>Conversion History</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody"></tbody>
+            </table>
         </div>
-
-        <button onclick="convert()">Convert</button>
-        <div class="result" id="result"></div>
     </div>
 </body>
 </html>
