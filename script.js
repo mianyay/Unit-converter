@@ -1,7 +1,8 @@
 const units = {
     length: ["meters", "centimeters", "millimeters", "feet", "inches", "yards", "miles", "light years"],
     weight: ["kilograms", "grams", "milligrams", "pounds", "ounce"],
-    temperature: ["celsius", "fahrenheit", "kelvin"]
+    temperature: ["celsius", "fahrenheit", "kelvin"],
+    time: ["seconds", "milliseconds", "nanoseconds", "minutes", "hours", "days", "weeks", "months", "years"]
 };
 
 const conversions = {
@@ -29,6 +30,18 @@ const conversions = {
         fahrenheit: a => (a * 9/5) + 32,
         kelvin: a => a + 273.15
     },
+
+    time: {
+        seconds: a => a,
+        milliseconds: a => a * 1000,
+        nanoseconds: a => a * 1e+9,
+        minutes: a => a / 60,
+        hours: a => a / 3600,
+        days: a => a / 86400,
+        weeks: a => a / 604800,
+        month: a => a / 2.628e+6,
+        years: a => a / 3.154e+7,
+    }
 };
 
 const inverse = {
@@ -56,6 +69,18 @@ const inverse = {
         fahrenheit: a => (a - 32) * 5/9,
         kelvin: a => a - 273.15
     },
+
+    time: {
+        seconds: a => a,
+        milliseconds: a => a / 1000,
+        nanoseconds: a => a / 1e+9,
+        minutes: a => a * 60,
+        hours: a => a * 3600,
+        days: a => a * 86400,
+        weeks: a => a * 604800,
+        month: a => a * 2.628e+6,
+        years: a => a * 3.154e+7,
+    }
 };
 
 function decimalpoint(n) {
