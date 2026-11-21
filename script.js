@@ -146,7 +146,7 @@ function convert() {
 
 
     if (isNaN(value)) {
-        resultBox.textContent = "Enter a valid number."
+        resultBox.textContent = "Please enter a valid number :D"
         resultBox.style.display = "block";
         return;
     };
