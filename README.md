@@ -29,7 +29,9 @@ Download the files and open index.html in a browser.
 <img width="1111" height="459" alt="Screenshot 2026-11-21 185531" src="https://github.com/user-attachments/assets/b40e1676-68c5-4f07-9ef6-26c49cfe6337" />
 <img width="1076" height="399" alt="image" src="https://github.com/user-attachments/assets/084fb995-b706-425c-9243-1527db5fe4c9" />
 
-
+## Credits
+- Tutorial for the general foundation of a unit converter: https://www.youtube.com/shorts/y1-5rHgQnhQ
+- Ideas: https://www.unitconverters.net/
 
 
 
